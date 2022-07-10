@@ -3,24 +3,25 @@ import json, time
 
 app = Flask(__name__)
 
-#  home
+global p1
+p1 = "no player"
+global p2
+p2 = "no player"
 @app.route('/', methods=['GET'])
-def home_page():
-    data_set = 'This is the home'
-
-    return data_set
-
-
-
-# enter username thing
-@app.route('/user/', methods=['GET'])  #  /user/?user=USERNAME
-def request_page():
-    user_query = str(request.args.get('user'))
-
-    data_set = f'You made the username {user_query}'
-
-    return data_set
-
+def home():
+    return "home"
+@app.route('/p1/', methods=['GET'])
+def pa():
+    a = str(request.args.get('data'))
+    global p1
+    p1 = a
+    return p2
+@app.route('/p2/', methods=['GET'])
+def pb():
+    a = str(request.args.get('data'))
+    global p2
+    p2 = a
+    return p1
 
 #  run app
 if __name__ == '__main__':
